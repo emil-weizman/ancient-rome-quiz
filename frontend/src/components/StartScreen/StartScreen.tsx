@@ -9,7 +9,13 @@ interface StartScreenProps {
 function StartScreen({ onStart, isLoading, error }: StartScreenProps) {
   return (
     <div className={styles.container}>
-      <p className={styles.emoji}>⚔️</p>
+      <div className={styles.imageWrapper}>
+        <img
+          src="/commander.webp"
+          alt="Roman Commander"
+          className={styles.heroImage}
+        />
+      </div>
       <h1 className={styles.title}>Ancient Rome Quiz</h1>
       <p className={styles.subtitle}>
         "What we do in life, echoes in eternity"

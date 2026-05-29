@@ -17,13 +17,20 @@ function ResultScreen({
 
   return (
     <div className={styles.container}>
+      <div className={styles.imageWrapper}>
+        <img
+          src={isGoodScore ? '/soldierOfRome.webp' : '/defeatedGladiator.webp'}
+          alt={isGoodScore ? 'Victory' : 'Defeat'}
+          className={styles.heroImage}
+        />
+      </div>
       <p className={styles.emoji}>{isGoodScore ? '🏆' : '⚔️'}</p>
       <h1 className={styles.title}>
         {isGoodScore ? 'Ave! Victory!' : 'The Arena Awaits Again'}
       </h1>
       <p className={styles.quote}>
         {isGoodScore
-          ? '"Are you not entertained?"'
+          ? '"Well done, soldier of Rome. The Empire honors you."'
           : '"Strength and honor, warrior"'}
       </p>
       <p className={styles.score}>

@@ -113,3 +113,8 @@ Returns 5 random questions from a pool of 20.
 - Gladiator-themed UI with animations
 - Responsive design
 - CSS Modules for scoped styling
+
+## Visual Assets
+
+The application uses original AI-generated artwork created specifically for this project.
+The images are designed to match the Ancient Rome theme and are not based on copyrighted movie stills, game assets, logos, or third-party images.

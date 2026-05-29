@@ -53,7 +53,7 @@ function App() {
           score={score}
           totalQuestions={questions.length}
           totalTime={totalTime}
-          onRestart={handleStartQuiz}
+          onRestart={() => setGameState('start')}
         />
       )}
     </div>
