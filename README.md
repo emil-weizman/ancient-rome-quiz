@@ -58,6 +58,7 @@ App runs on http://localhost:5173
 
 ## 📁 Project Structure
 
+```
 ancient-rome-quiz/
 ├── backend/
 │ └── src/
@@ -80,6 +81,7 @@ ancient-rome-quiz/
 │ │ └── index.ts # TypeScript interfaces
 │ └── App.tsx # Main app component
 └── README.md
+```
 
 ## 🔌 API
 
