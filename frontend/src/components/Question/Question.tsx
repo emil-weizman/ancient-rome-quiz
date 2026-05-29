@@ -38,7 +38,7 @@ function Question({ question, onAnswer }: QuestionProps) {
       const isCorrect = selectedAnswer === question.answer_index;
       const timeSpent = selectedAtTime.current ?? 0;
       onAnswer(isCorrect, timeSpent);
-    }, 2000);
+    }, 1000);
   }, [selectedAnswer, question.answer_index, onAnswer]);
 
   const handleTick = useCallback(

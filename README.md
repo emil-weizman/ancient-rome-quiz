@@ -53,7 +53,7 @@ App runs on http://localhost:5173
 3. Each question has a **20-second timer**
 4. A **hint** appears after 10 seconds
 5. Select your answer — it will be highlighted until time runs out
-6. After time expires, the correct answer is shown for 2 seconds
+6. After time expires, the correct answer is shown for 1 second
 7. See your final score and total time for correct answers
 
 ## 📁 Project Structure
