@@ -10,16 +10,23 @@ function App() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [score, setScore] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleStartQuiz = async () => {
+    setIsLoading(true);
+    setError(null);
+
     try {
       const data = await fetchQuizQuestions();
       setQuestions(data);
       setScore(0);
       setTotalTime(0);
       setGameState('playing');
-    } catch (error) {
-      console.error('Failed to load questions:', error);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -31,7 +38,13 @@ function App() {
 
   return (
     <div>
-      {gameState === 'start' && <StartScreen onStart={handleStartQuiz} />}
+      {gameState === 'start' && (
+        <StartScreen
+          onStart={handleStartQuiz}
+          isLoading={isLoading}
+          error={error}
+        />
+      )}
       {gameState === 'playing' && (
         <QuizScreen questions={questions} onComplete={handleQuizComplete} />
       )}

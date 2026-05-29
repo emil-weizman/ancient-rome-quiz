@@ -13,7 +13,7 @@ function ResultScreen({
   totalTime,
   onRestart,
 }: ResultScreenProps) {
-  const isGoodScore = score >= 3;
+  const isGoodScore = score / totalQuestions >= 0.6;
 
   return (
     <div className={styles.container}>

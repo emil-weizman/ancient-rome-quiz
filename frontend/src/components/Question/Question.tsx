@@ -1,15 +1,10 @@
 import { useState, useCallback, useRef } from 'react';
+import type { Question as QuestionType } from '../../types';
 import Timer from '../Timer/Timer';
 import styles from './Question.module.css';
 
 interface QuestionProps {
-  question: {
-    question_id: number;
-    question: string;
-    hint: string;
-    answer_index: number;
-    choices: string[];
-  };
+  question: QuestionType;
   onAnswer: (isCorrect: boolean, timeSpent: number) => void;
 }
 
