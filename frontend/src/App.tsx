@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import type { Question, GameState } from './types';
 import { fetchQuizQuestions } from './api/quizApi';
-import StartScreen from './components/StartScreen';
-import QuizScreen from './components/QuizScreen';
-import ResultScreen from './components/ResultScreen';
-import './App.css';
+import StartScreen from './components/StartScreen/StartScreen';
+import QuizScreen from './components/QuizScreen/QuizScreen';
+import ResultScreen from './components/ResultScreen/ResultScreen';
 
 function App() {
   const [gameState, setGameState] = useState<GameState>('start');
@@ -31,7 +30,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div>
       {gameState === 'start' && <StartScreen onStart={handleStartQuiz} />}
       {gameState === 'playing' && (
         <QuizScreen questions={questions} onComplete={handleQuizComplete} />

@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
-import Timer from './Timer';
+import Timer from '../Timer/Timer';
+import styles from './Question.module.css';
 
 interface QuestionProps {
   question: {
@@ -13,11 +14,12 @@ interface QuestionProps {
 }
 
 function Question({ question, onAnswer }: QuestionProps) {
-  const TOTAL_TIME = 20;
+  const TOTAL_TIME = 5;
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showHint, setShowHint] = useState(false);
   const [showCorrect, setShowCorrect] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+
   const timeLeftRef = useRef(TOTAL_TIME);
   const selectedAtTime = useRef<number | null>(null);
 
@@ -51,16 +53,16 @@ function Question({ question, onAnswer }: QuestionProps) {
 
   const getButtonClass = (index: number): string => {
     if (!showCorrect) {
-      return index === selectedAnswer ? 'selected' : '';
+      return index === selectedAnswer ? styles.selected : '';
     }
 
-    if (index === question.answer_index) return 'correct';
-    if (index === selectedAnswer) return 'wrong';
+    if (index === question.answer_index) return styles.correct;
+    if (index === selectedAnswer) return styles.wrong;
     return '';
   };
 
   return (
-    <div className="question">
+    <div className={styles.container}>
       <Timer
         duration={TOTAL_TIME}
         onTimeUp={handleTimeUp}
@@ -68,17 +70,19 @@ function Question({ question, onAnswer }: QuestionProps) {
         isPaused={isPaused}
       />
 
-      <h2 className="question-text">{question.question}</h2>
+      <h2 className={styles.questionText}>{question.question}</h2>
 
-      {showHint && <p className="hint">Hint: {question.hint}</p>}
+      <div className={styles.hintWrapper}>
+        {showHint && <p className={styles.hint}>💡 {question.hint}</p>}
+      </div>
 
-      <div className="choices">
+      <div className={styles.choices}>
         {question.choices.map((choice, index) => (
           <button
             key={index}
-            className={`choice-button ${getButtonClass(index)}`}
+            className={`${styles.choiceButton} ${getButtonClass(index)}`}
             onClick={() => handleSelect(index)}
-            disabled={showCorrect}
+            disabled={selectedAnswer !== null || showCorrect}
           >
             {choice}
           </button>

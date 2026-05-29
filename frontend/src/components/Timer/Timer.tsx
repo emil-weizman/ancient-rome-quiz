@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import styles from './Timer.module.css';
 
 interface TimerProps {
   duration: number;
@@ -28,10 +29,22 @@ function Timer({ duration, onTimeUp, onTick, isPaused }: TimerProps) {
 
   const percentage = (timeLeft / duration) * 100;
 
+  const getBarColor = () => {
+    if (percentage > 50) return 'linear-gradient(90deg, #4caf50, #66bb6a)';
+    if (percentage > 25) return 'linear-gradient(90deg, #ff9800, #ffa726)';
+    return 'linear-gradient(90deg, #f44336, #ef5350)';
+  };
+
   return (
-    <div className="timer">
-      <div className="timer-bar" style={{ width: `${percentage}%` }} />
-      <span className="timer-text">{timeLeft}s</span>
+    <div className={styles.timer}>
+      <div
+        className={styles.timerBar}
+        style={{
+          width: `${percentage}%`,
+          background: getBarColor(),
+        }}
+      />
+      <span className={styles.timerText}>{timeLeft}s</span>
     </div>
   );
 }

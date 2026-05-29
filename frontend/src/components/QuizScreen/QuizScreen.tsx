@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
-import type { Question } from '../types';
-import QuestionComponent from './Question';
+import type { Question } from '../../types';
+import QuestionComponent from '../Question/Question';
+import styles from './QuizScreen.module.css';
 
 interface QuizScreenProps {
   questions: Question[];
@@ -31,9 +32,9 @@ function QuizScreen({ questions, onComplete }: QuizScreenProps) {
   );
 
   return (
-    <div className="quiz-screen">
-      <div className="quiz-header">
-        <span>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <span className={styles.progress}>
           Question {currentIndex + 1} of {questions.length}
         </span>
       </div>
