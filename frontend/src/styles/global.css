@@ -24,3 +24,17 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
+
+@media (max-width: 600px) {
+  #root {
+    padding: 12px;
+    align-items: center;
+  }
+}
+
+@media (max-height: 500px) {
+  #root {
+    align-items: flex-start;
+    padding: 12px;
+  }
+}

@@ -72,3 +72,17 @@
   font-size: 1.1rem;
   margin-bottom: 24px;
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 32px 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .emoji {
+    font-size: 2.5rem;
+  }
+}

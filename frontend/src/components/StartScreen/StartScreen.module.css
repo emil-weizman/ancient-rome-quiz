@@ -66,3 +66,19 @@
   font-size: 3rem;
   margin-bottom: 16px;
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 40px 24px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .startButton {
+    padding: 14px 36px;
+    font-size: 1rem;
+    width: 100%;
+  }
+}

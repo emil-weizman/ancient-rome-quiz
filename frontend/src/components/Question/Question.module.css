@@ -115,3 +115,14 @@
     transform: translateX(5px);
   }
 }
+
+@media (max-width: 600px) {
+  .questionText {
+    font-size: 1.1rem;
+  }
+
+  .choiceButton {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+}

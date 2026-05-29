@@ -36,3 +36,10 @@
   font-weight: 600;
   color: #d4af37;
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    min-height: auto;
+  }
+}
