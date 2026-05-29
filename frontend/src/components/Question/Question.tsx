@@ -14,7 +14,7 @@ interface QuestionProps {
 }
 
 function Question({ question, onAnswer }: QuestionProps) {
-  const TOTAL_TIME = 5;
+  const TOTAL_TIME = 20;
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showHint, setShowHint] = useState(false);
   const [showCorrect, setShowCorrect] = useState(false);
