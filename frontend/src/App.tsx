@@ -23,7 +23,7 @@ function App() {
       setScore(0);
       setTotalTime(0);
       setGameState('playing');
-    } catch (err) {
+    } catch {
       setError('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
@@ -53,7 +53,10 @@ function App() {
           score={score}
           totalQuestions={questions.length}
           totalTime={totalTime}
-          onRestart={() => setGameState('start')}
+          onRestart={() => {
+            setError(null);
+            setGameState('start');
+          }}
         />
       )}
     </div>
