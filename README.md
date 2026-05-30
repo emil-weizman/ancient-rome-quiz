@@ -46,6 +46,13 @@ npm run dev
 
 App runs on http://localhost:5173
 
+**4. Run Tests:**
+
+```bash
+cd frontend
+npm test
+```
+
 ## 🎮 How to Play
 
 1. Click **"Enter The Arena"** to start
@@ -53,7 +60,7 @@ App runs on http://localhost:5173
 3. Each question has a **20-second timer**
 4. A **hint** appears after 10 seconds
 5. Select your answer — it will be highlighted until time runs out
-6. After time expires, the correct answer is shown for 1 second
+6. After time expires, the correct answer is shown for 2 seconds
 7. See your final score and total time for correct answers
 
 ## 📁 Project Structure
@@ -61,25 +68,29 @@ App runs on http://localhost:5173
 ```
 ancient-rome-quiz/
 ├── backend/
-│ └── src/
-│ ├── data/
-│ │ └── questions.ts # 20 quiz questions
-│ ├── routes/
-│ │ └── quiz.ts # GET /api/quiz endpoint
-│ └── server.ts # Express server setup
+│   └── src/
+│       ├── data/
+│       │   └── questions.ts       # 20 quiz questions
+│       ├── routes/
+│       │   └── quiz.ts            # GET /api/quiz endpoint
+│       └── server.ts              # Express server setup
 ├── frontend/
-│ └── src/
-│ ├── api/
-│ │ └── quizApi.ts # API fetch function
-│ ├── components/
-│ │ ├── StartScreen/ # Welcome screen
-│ │ ├── QuizScreen/ # Quiz game logic
-│ │ ├── Question/ # Question with choices
-│ │ ├── Timer/ # Countdown timer
-│ │ └── ResultScreen/ # Final score display
-│ ├── types/
-│ │ └── index.ts # TypeScript interfaces
-│ └── App.tsx # Main app component
+│   └── src/
+│       ├── api/
+│       │   └── quizApi.ts         # API fetch function
+│       ├── components/
+│       │   ├── StartScreen/       # Welcome screen
+│       │   ├── QuizScreen/        # Quiz game logic
+│       │   ├── Question/          # Question with choices and timer
+│       │   ├── Timer/             # Countdown timer
+│       │   └── ResultScreen/      # Final score display
+│       ├── hooks/
+│       │   └── useQuizQuestions.ts # Custom hook for data fetching
+│       ├── constants/
+│       │   └── resultMessages.ts  # Result screen messages and quotes
+│       ├── types/
+│       │   └── index.ts           # TypeScript interfaces
+│       └── App.tsx                # Main app component
 └── README.md
 ```
 
@@ -105,16 +116,18 @@ Returns 5 random questions from a pool of 20.
 
 ## ✨ Features
 
-- Randomized questions from a pool of 20
+- Randomized questions from a pool of 20 using Fisher-Yates shuffle
 - 20-second countdown timer with color-changing progress bar
 - Hints appear after 10 seconds
 - Visual feedback for correct/incorrect answers
+- Three different result screens based on score
 - Score tracking with time measurement for correct answers
-- Gladiator-themed UI with animations
-- Responsive design
+- Custom React hook for data fetching with loading and error states
+- Gladiator-themed UI with AI-generated artwork and animations
+- Responsive design for mobile and tablet
 - CSS Modules for scoped styling
+- Unit tests with Vitest and React Testing Library (14 tests)
 
-## Visual Assets
+## 🖼️ Visual Assets
 
-The application uses original AI-generated artwork created specifically for this project.
-The images are designed to match the Ancient Rome theme and are not based on copyrighted movie stills, game assets, logos, or third-party images.
+The application uses original AI-generated artwork created specifically for this project. The images are designed to match the Ancient Rome theme and are not based on copyrighted movie stills, game assets, logos, or third-party images.
