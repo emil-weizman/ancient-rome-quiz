@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import type { Question as QuestionType } from '../../types';
-import Timer from '../Timer/Timer';
+import { Timer } from '../Timer/Timer';
 import styles from './Question.module.css';
 
 interface QuestionProps {
@@ -8,8 +8,9 @@ interface QuestionProps {
   onAnswer: (isCorrect: boolean, timeSpent: number) => void;
 }
 
-function Question({ question, onAnswer }: QuestionProps) {
-  const TOTAL_TIME = 20;
+const TOTAL_TIME = 20;
+
+export function Question({ question, onAnswer }: QuestionProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showHint, setShowHint] = useState(false);
   const [showCorrect, setShowCorrect] = useState(false);
@@ -85,5 +86,3 @@ function Question({ question, onAnswer }: QuestionProps) {
     </div>
   );
 }
-
-export default Question;

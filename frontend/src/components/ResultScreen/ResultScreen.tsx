@@ -8,7 +8,7 @@ interface ResultScreenProps {
   onRestart: () => void;
 }
 
-function ResultScreen({
+export function ResultScreen({
   score,
   totalQuestions,
   totalTime,
@@ -40,5 +40,3 @@ function ResultScreen({
     </div>
   );
 }
-
-export default ResultScreen;

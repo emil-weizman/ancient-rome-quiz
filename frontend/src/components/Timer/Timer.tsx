@@ -8,7 +8,7 @@ interface TimerProps {
   isPaused: boolean;
 }
 
-function Timer({ duration, onTimeUp, onTick, isPaused }: TimerProps) {
+export function Timer({ duration, onTimeUp, onTick, isPaused }: TimerProps) {
   const [timeLeft, setTimeLeft] = useState(duration);
   const onTimeUpRef = useRef(onTimeUp);
   const onTickRef = useRef(onTick);
@@ -57,5 +57,3 @@ function Timer({ duration, onTimeUp, onTick, isPaused }: TimerProps) {
     </div>
   );
 }
-
-export default Timer;

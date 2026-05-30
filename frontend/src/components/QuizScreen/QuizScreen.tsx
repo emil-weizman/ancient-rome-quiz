@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import type { Question } from '../../types';
-import QuestionComponent from '../Question/Question';
+import { Question as QuestionComponent } from '../Question/Question';
 import styles from './QuizScreen.module.css';
 
 interface QuizScreenProps {
@@ -8,7 +8,7 @@ interface QuizScreenProps {
   onComplete: (score: number, totalTime: number) => void;
 }
 
-function QuizScreen({ questions, onComplete }: QuizScreenProps) {
+export function QuizScreen({ questions, onComplete }: QuizScreenProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
@@ -46,5 +46,3 @@ function QuizScreen({ questions, onComplete }: QuizScreenProps) {
     </div>
   );
 }
-
-export default QuizScreen;

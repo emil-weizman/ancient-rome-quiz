@@ -5,5 +5,3 @@ export interface Question {
   answer_index: number;
   choices: string[];
 }
-
-export type GameState = 'start' | 'playing' | 'result';

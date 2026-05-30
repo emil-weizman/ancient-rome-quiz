@@ -6,7 +6,7 @@ interface StartScreenProps {
   error: string | null;
 }
 
-function StartScreen({ onStart, isLoading, error }: StartScreenProps) {
+export function StartScreen({ onStart, isLoading, error }: StartScreenProps) {
   return (
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
@@ -32,5 +32,3 @@ function StartScreen({ onStart, isLoading, error }: StartScreenProps) {
     </div>
   );
 }
-
-export default StartScreen;

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, act } from '@testing-library/react';
-import Timer from './Timer';
+import { Timer } from './Timer';
 
 describe('Timer', () => {
   it('renders with correct initial time', () => {
