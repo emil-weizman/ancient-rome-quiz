@@ -13,21 +13,24 @@
   line-height: 1.5;
 }
 
+.hintWrapper {
+  margin-bottom: 16px;
+}
+
 .hint {
   color: #d4af37;
   font-style: italic;
-  margin-bottom: 16px;
   font-size: 0.95rem;
   padding: 8px 12px;
   background: rgba(212, 175, 55, 0.1);
   border-left: 3px solid #d4af37;
   border-radius: 0 8px 8px 0;
-  animation: fadeIn 0.4s ease-out;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
 }
 
-.hintWrapper {
-  min-height: 44px;
-  margin-bottom: 16px;
+.hintVisible {
+  opacity: 1;
 }
 
 @keyframes fadeIn {

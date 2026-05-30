@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './Timer.module.css';
 
 interface TimerProps {
@@ -10,22 +10,31 @@ interface TimerProps {
 
 function Timer({ duration, onTimeUp, onTick, isPaused }: TimerProps) {
   const [timeLeft, setTimeLeft] = useState(duration);
+  const onTimeUpRef = useRef(onTimeUp);
+  const onTickRef = useRef(onTick);
+  const firedRef = useRef(false);
+
+  onTimeUpRef.current = onTimeUp;
+  onTickRef.current = onTick;
 
   useEffect(() => {
     if (isPaused) return;
 
     if (timeLeft <= 0) {
-      onTimeUp();
+      if (!firedRef.current) {
+        firedRef.current = true;
+        onTimeUpRef.current();
+      }
       return;
     }
 
     const timer = setTimeout(() => {
       setTimeLeft(timeLeft - 1);
-      onTick(timeLeft - 1);
+      onTickRef.current(timeLeft - 1);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [timeLeft, isPaused, onTimeUp, onTick]);
+  }, [timeLeft, isPaused]);
 
   const percentage = (timeLeft / duration) * 100;
 

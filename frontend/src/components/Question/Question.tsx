@@ -36,15 +36,12 @@ function Question({ question, onAnswer }: QuestionProps) {
     }, 1000);
   }, [selectedAnswer, question.answer_index, onAnswer]);
 
-  const handleTick = useCallback(
-    (timeLeft: number) => {
-      timeLeftRef.current = timeLeft;
-      if (timeLeft <= 10 && !showHint) {
-        setShowHint(true);
-      }
-    },
-    [showHint],
-  );
+  const handleTick = useCallback((timeLeft: number) => {
+    timeLeftRef.current = timeLeft;
+    if (timeLeft <= 10) {
+      setShowHint(true);
+    }
+  }, []);
 
   const getButtonClass = (index: number): string => {
     if (!showCorrect) {
@@ -68,7 +65,9 @@ function Question({ question, onAnswer }: QuestionProps) {
       <h2 className={styles.questionText}>{question.question}</h2>
 
       <div className={styles.hintWrapper}>
-        {showHint && <p className={styles.hint}>💡 {question.hint}</p>}
+        <p className={`${styles.hint} ${showHint ? styles.hintVisible : ''}`}>
+          💡 {question.hint}
+        </p>
       </div>
 
       <div className={styles.choices}>

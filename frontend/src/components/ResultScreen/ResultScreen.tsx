@@ -1,4 +1,5 @@
 import styles from './ResultScreen.module.css';
+import { getResultMessage } from './resultMessages';
 
 interface ResultScreenProps {
   score: number;
@@ -13,26 +14,20 @@ function ResultScreen({
   totalTime,
   onRestart,
 }: ResultScreenProps) {
-  const isGoodScore = score / totalQuestions >= 0.6;
+  const result = getResultMessage(score, totalQuestions);
 
   return (
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         <img
-          src={isGoodScore ? '/soldierOfRome.webp' : '/defeatedGladiator.webp'}
-          alt={isGoodScore ? 'Victory' : 'Defeat'}
+          src={result.image}
+          alt={result.altText}
           className={styles.heroImage}
         />
       </div>
-      <p className={styles.emoji}>{isGoodScore ? '🏆' : '⚔️'}</p>
-      <h1 className={styles.title}>
-        {isGoodScore ? 'Ave! Victory!' : 'The Arena Awaits Again'}
-      </h1>
-      <p className={styles.quote}>
-        {isGoodScore
-          ? '"Well done, soldier of Rome. The Empire honors you."'
-          : '"Strength and honor, warrior"'}
-      </p>
+      <p className={styles.emoji}>{result.emoji}</p>
+      <h1 className={styles.title}>{result.title}</h1>
+      <p className={styles.quote}>{result.quote}</p>
       <p className={styles.score}>
         {score} out of {totalQuestions} correct
       </p>
